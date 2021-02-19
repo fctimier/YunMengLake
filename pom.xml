@@ -18,10 +18,11 @@
         <java.version>1.8</java.version>
     </properties>
     <dependencies>
-        <!--jdbc支持-->
+        <!--内嵌Tomcat-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
         </dependency>
         <!--WEB支持-->
         <dependency>
@@ -33,6 +34,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
         </dependency>
+        <!--FastJson支持-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
+        </dependency>
         <!--Servlet支持-->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -40,18 +47,29 @@
             <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
-        <!--MyBatis支持-->
-        <dependency>
+        <!--MyBatis 支持-->
+        <!--<dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.1.4</version>
-        </dependency>
+        </dependency>-->
         <!--热部署-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
+        </dependency>
+        <!--支持测试-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- Spring-data-jpa依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <!--MySql 驱动-->
         <dependency>
@@ -65,23 +83,17 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <!--内嵌Tomcat-->
+        <!--  MyBatis Plus 支持 -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.2.0</version>
         </dependency>
-        <!--支持测试-->
+        <!-- mybatis plus 代码生成器 -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!--FastJson支持-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.47</version>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.2.0</version>
         </dependency>
     </dependencies>
 
@@ -90,7 +102,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.3.4.RELEASE</version>
+                <version>2.3.0.RELEASE</version>
                 <configuration>
                     <excludes>
                         <exclude>
