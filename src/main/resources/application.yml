@@ -2,15 +2,36 @@
 spring:
   devtools:
     restart:
-      enabled: true #�Ȳ�����Ч
-      additional-paths: src/main/java #����������Ŀ¼,�����Ǹ�Ŀ¼���ļ���Ҫrestart
+      enabled: true
+      additional-paths: src/main/java
       exclude: WEB-INF/**
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/yunmenglake?allowMultiQueries=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://192.168.0.113:3306/yunmenglake?allowMultiQueries=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
-    password: 1234
+    password: root
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
+#设置自己启动的端口
+server:
+  port: 8080
+
+#mybatis plus
+mybatis-plus:
+  #指明mapper.xml扫描位置(classpath* 代表编译后类文件根目录)
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+  #指明实体扫描(多个package用逗号或者分号分隔)
+  typeAliasesPackage: javademo.tyh.model.base;javademo.tyh.model.hotel;
+  global-config:
+    #主键类型 0:数据库ID自增, 1:用户输入ID,2:全局唯一ID (数字类型唯一ID), 3:全局唯一ID UUID
+    id-type: 0
+    #字段策略(拼接sql时用于判断属性值是否拼接) 0:忽略判断,1:非NULL判断,2:非空判断
+    field-strategy: 2
+    #驼峰下划线转换含查询column及返回column(column下划线命名create_time，返回java实体是驼峰命名createTime，开启后自动转换否则保留原样)
+    db-column-underline: true
+    #是否动态刷新mapper
+    refresh-mapper: false
+    #数据库大写命名下划线转换
+    #capital-mode: true

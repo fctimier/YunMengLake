@@ -1,5 +1,6 @@
 package com.yun.model;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import org.hibernate.annotations.DynamicInsert;
 
@@ -15,6 +16,7 @@ import java.io.Serializable;
 @Table
 @DynamicInsert
 @Data
+@TableName("S_USER")
 public class SUser implements Serializable {
 
     private static final long serialVersionUID = 6773079377375984271L;
